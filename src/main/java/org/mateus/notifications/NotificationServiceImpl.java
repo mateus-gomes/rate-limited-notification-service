@@ -20,9 +20,11 @@ public class NotificationServiceImpl implements NotificationService{
     }
 
     @Override
-    public void send(String type, String userId, String message) {
+    public boolean send(String type, String userId, String message) {
         saveUserNotification(userId, type);
         System.out.printf("Sending %s email to user %s with the content %s%n", type, userId, message);
+
+        return true;
     }
 
     public void createNotificationType(
@@ -51,7 +53,7 @@ public class NotificationServiceImpl implements NotificationService{
         }
 
         throw new OutOfRateLimitException(String.format(
-                "Can't send %s notification type to User %s. Max notifications already reached",
+                "Can't send %s notification type to User %s. Max notifications already reached.",
                 notificationKey,
                 userId
         ));
