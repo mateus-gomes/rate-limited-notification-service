@@ -1,1 +1,1 @@
-# rate-limited-notification-service
+# Rate-limited Notification Service
